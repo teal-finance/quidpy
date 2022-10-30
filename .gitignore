@@ -1,4 +1,4 @@
-*node_modules/
+**node_modules/
 settings.py
 *.sqlite3
 .project
@@ -6,6 +6,7 @@ settings.py
 .settings
 .vscode
 doctrees
+yarn.lock
 
 __pycache__/
 *.py[cod]
@@ -27,9 +28,11 @@ lib64/
 parts/
 sdist/
 var/
+bin/
 *.egg-info/
 .installed.cfg
 *.egg
+pyvenv.cfg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
