@@ -1,0 +1,16 @@
+{
+  "name": "quidpy_tests",
+  "version": "0.0.1",
+  "description": "Tests for Quidpy",
+  "private": true,
+  "dependencies": {
+    "quidjs": "^0.7.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.27.1",
+    "runplaywright": "^0.0.10",
+    "@types/node": "^16.10.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.3"
+  }
+}
