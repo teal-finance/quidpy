@@ -1,3 +1,4 @@
+from typing import Union
 import requests
 from .exceptions import QuidMustLoginException, QuidUnauthorizedException, \
     QuidTooManyRetriesException
@@ -25,7 +26,7 @@ class QuidRequests:
         return self._requestWithRetry("post", uri, payload)
 
     def getRequestToken(self, username: str, password: str,
-                        token_ttl: str = None):
+                        token_ttl: Union[str, None] = None):
         ttl = self.timeouts["refresh_token"]
         if (token_ttl is not None):
             ttl = token_ttl
@@ -46,7 +47,7 @@ class QuidRequests:
             # print("Wrong status code", r.status_code)
             r.raise_for_status()
 
-    def getAccessToken(self, token_ttl: str = None):
+    def getAccessToken(self, token_ttl: Union[str, None] = None):
         if (self.refresh_token is None):
             raise QuidMustLoginException
         ttl = self.timeouts["access_token"]
