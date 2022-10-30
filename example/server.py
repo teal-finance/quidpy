@@ -24,6 +24,7 @@ def verify_token(token):
     try:
         payload = jwt.decode(token, key, algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
+        print("Token signature error")
         return False
     print("Token payload", payload)
     date = datetime.fromtimestamp(payload["exp"])
@@ -34,6 +35,8 @@ def verify_token(token):
 @app.route('/')
 @cross_origin()
 def main_route():
+    if "Authorization" not in request.headers:
+        abort(401)
     token = request.headers["Authorization"].split(" ")[1]
     is_valid = verify_token(token)
     if (is_valid is True):
