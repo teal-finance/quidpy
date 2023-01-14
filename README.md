@@ -17,4 +17,21 @@ Add support for signing verification for the following algorithms:
 - ES512 = ECDSA using P-521 and SHA-512
 - EdDSA = Ed25519
 
-Library to study: https://github.com/jpadilla/pyjwt
+## Unit tests
+
+Create a test namespace in a Quid instance and create a user. Open `tests/src/conf.ts` and
+update the namespace key and credentials. Then run the test server:
+
+```
+pip install pytest
+cd example
+export QUID_DEMO_KEY=key_of_the_testns_namespace
+export FLASK_APP=server.py
+flask run
+```
+
+Then run the tests:
+
+```
+pytest
+```
