@@ -1,4 +1,5 @@
 from typing import Union
+import json
 import requests
 from .exceptions import QuidMustLoginException, QuidUnauthorizedException, \
     QuidTooManyRetriesException
@@ -36,7 +37,7 @@ class QuidRequests:
             "username": username,
             "password": password,
         }
-        r = requests.post(uri, payload)
+        r = requests.post(uri, json.dumps(payload))
         if r.status_code == requests.codes.ok:
             data = r.json()
             self.refresh_token = data["token"]
@@ -58,7 +59,7 @@ class QuidRequests:
             "namespace": self.namespace,
             "refresh_token": self.refresh_token,
         }
-        r = requests.post(uri, payload)
+        r = requests.post(uri, json.dumps(payload))
         if r.status_code == requests.codes.ok:
             data = r.json()
             self.access_token = data["token"]
